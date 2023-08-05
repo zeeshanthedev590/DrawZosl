@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ZOSL Groups</title>
+</head>
+<body>
+<div>
+<h3>Users</h3>
+<ul>
+<li>username</li>
+<li>password</li>
+</ul>
+</div>
+<div>
+<h3>Posts</h3>
+<ul>
+<li>username</li>
+<li>content</li>
+</ul>
+</div>
+<h3>Relationships:</h3>
+<ul>
+<li>@Users(username) -> @Posts(username)</li>
+</ul>
+<script>
+document.getElementById('@Users').style.backgroundColor = 'red';
+document.getElementById('@Posts').style.backgroundColor = 'red';
+</script>
+</body>
+</html>
