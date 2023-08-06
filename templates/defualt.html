@@ -16,35 +16,22 @@
     </style>
   </head>
   <body>
-    
-    <div class="group-card" id="Users">
-      <h3>Users</h3>
+    {% for group, data in groups.items() %}
+    <div class="group-card" id="{{ group }}">
+      <h3>{{ group }}</h3>
       <ul>
-         
-        <li>username</li>
-          
-        <li>password</li>
-         
+        {% for field in data.fields %} {% if "//" not in field %}
+        <li>{{ field }}</li>
+        {% endif %} {% endfor %}
       </ul>
     </div>
-    
-    <div class="group-card" id="Posts">
-      <h3>Posts</h3>
-      <ul>
-         
-        <li>username</li>
-          
-        <li>content</li>
-         
-      </ul>
-    </div>
-    
+    {% endfor %}
 
     <h3>Relationships:</h3>
     <ul>
-       
-      <li class="relationship">@Users(username) -> @Posts(username)</li>
-       
+      {% for relation in relationships %} {% if "//" not in relation %}
+      <li class="relationship">{{ relation }}</li>
+      {% endif %} {% endfor %}
     </ul>
   </body>
 </html>

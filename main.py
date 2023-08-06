@@ -42,7 +42,7 @@ def tokenize(input_content):
 def generate_html(groups, relationships):
     # Load Jinja templates from a "templates" folder
     env = Environment(loader=FileSystemLoader("templates"))
-    template = env.get_template("output_template.html")
+    template = env.get_template("defualt.html")
 
     # Render the template with the provided data
     html_content = template.render(groups=groups, relationships=relationships)
