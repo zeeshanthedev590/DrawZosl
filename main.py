@@ -42,7 +42,8 @@ def tokenize(input_content):
 def generate_html(groups, relationships):
     # Load Jinja templates from a "templates" folder
     env = Environment(loader=FileSystemLoader("templates"))
-    template = env.get_template("defualt.html")
+    template_name = input("Enter the name of your template file: ")
+    template = env.get_template(template_name)
 
     # Render the template with the provided data
     html_content = template.render(groups=groups, relationships=relationships)
@@ -55,14 +56,14 @@ def read_input_file(file_path):
 
 def main():
     # Replace "example.zosl" with the path to your local ZOSL file
-    input_file = "example.zosl"
+    input_file = input("Enter the path to your zosl file:")
 
     input_content = read_input_file(input_file)
     parsed_data = tokenize(remove_comments(input_content))
     html_content = generate_html(parsed_data["groups"], parsed_data["relationships"])
 
     # Write the HTML content to a local file
-    output_file = "output.html"
+    output_file = input('Enter the name of the output file: ')
     with open(output_file, "w") as file:
         file.write(html_content)
 

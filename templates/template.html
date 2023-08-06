@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>ZOSL Groups</title>
+  <style>
+    /* Add any additional CSS styling here */
+    body {
+      font-family: "Arial", sans-serif;
+      background: linear-gradient(to right, rgb(254, 240, 138), rgb(251, 207, 232), rgb(244, 114, 182));
+      color: #333;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      /*align-items: center;*/
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content:space-between;
+    }
+
+    .group-container {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+
+    .group-card {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 10px;
+      margin: 10px;
+      background-color: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 200px;
+      max-width: 100%;
+    }
+
+    .group-card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    .group-card ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .group-card li {
+      margin-bottom: 5px;
+    }
+
+    .relationship {
+      color: red;
+    }
+
+    .relationship-list {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      color: #555;
+    }
+
+    .relationship-list li {
+      margin-bottom: 5px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .relationship-list li:before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="group-container">
+      {% for group, data in groups.items() %}
+      <div class="group-card" id="{{ group }}">
+        <h3>{{ group }}</h3>
+        <ul>
+          {% for field in data.fields %} {% if "//" not in field %}
+          <li>{{ field }}</li>
+          {% endif %} {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div>
+      <h3>Relationships:</h3>
+      <ul class="relationship-list">
+        {% for relation in relationships %} {% if "//" not in relation %}
+        <li>{{ relation }}</li>
+        {% endif %} {% endfor %}
+      </ul>
+    </div>
+  </div>
+</body>
+
+</html>
